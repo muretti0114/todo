@@ -1,0 +1,164 @@
+/* CSSコピペ元 https: //webliker.info/75964/#toc_3 */
+
+table.tablist {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tablist th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+.tablist th:last-child {
+    border-radius: 0 5px 0 0;
+    border-right: 1px solid #3c6690;
+}
+
+.tablist th {
+    text-align: center;
+    color: white;
+    background: linear-gradient(#829ebc, #225588);
+    border-left: 1px solid #3c6690;
+    border-top: 1px solid #3c6690;
+    border-bottom: 1px solid #3c6690;
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+    padding: 10px 0;
+}
+
+.tablist td {
+    text-align: center;
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    border-top: none;
+    box-shadow: 0px -3px 5px 1px #eee inset;
+    padding: 10px 0;
+}
+
+.tablist td:last-child {
+    border-right: 1px solid #a8b7c5;
+}
+
+.tablist tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+}
+
+.tablist tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
+}
+
+.tablist tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+
+/* 
+入力ボタン 
+*/
+
+.simple_square_btn5 {
+    position: relative;
+    width: 160px;
+    padding: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px 5px 10px 5px;
+    color: #fff;
+    background: #3c6690;
+    font-size: 14pt;
+}
+
+.simple_square_btn5:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+table.tabform table {
+    border-collapse: separate;
+    margin: 20px;
+}
+
+table.tabform td {
+    padding: 10px 0 10px 0;
+}
+
+.large {
+    font-size: 14pt;
+}
+
+
+/** ToDoのテーブルデザイン．コピペ元 https://www.torat.jp/css-table-design/ */
+
+table.todolist {
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 15px -6px #00000073;
+}
+
+.todolist tr {
+    width: 20%;
+    padding: 20px 0;
+}
+
+.todolist td,
+.todolist th {
+    text-align: left;
+    padding: 10px;
+}
+
+.todo tr:hover {
+    background-color: #d5f8d5;
+}
+
+.todo th {
+    background-color: #30af30;
+    color: #fff;
+}
+
+.done tr:hover {
+    background-color: #eee;
+}
+
+.done th {
+    background-color: #888;
+    color: #fff;
+}
+
+.newtodo {
+    background-color: #d5f8d5;
+}
+
+
+/** ボタン用のデザイン https://webparts.cman.jp/button/a/  */
+
+.button {
+    display: inline-block;
+    border-radius: 5%;
+    /* 角丸       */
+    font-size: 14pt;
+    /* 文字サイズ */
+    text-align: center;
+    /* 文字位置   */
+    cursor: pointer;
+    /* カーソル   */
+    padding: 10px 10px;
+    /* 余白       */
+    background: #ccc;
+    /* 背景色     */
+    color: #000;
+    /* 文字色     */
+    line-height: 1em;
+    /* 1行の高さ  */
+    opacity: 0.9;
+    /* 透明度     */
+    transition: .3s;
+    /* なめらか変化 */
+    text-decoration: none;
+    box-shadow: 2px 2px #666666;
+    /* 影の設定 */
+}

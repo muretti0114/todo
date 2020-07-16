@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.name} + 'さんのToDoList'"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+
+<body>
+    <h1 th:text="|ようこそ ${user.name} さん|"></h1>
+    <a class="button" th:href="@{/todos/{uid}(uid=${user.uid})}">自分のToDo</a>
+    <a class="button" th:href="@{/todos/{uid}/all(uid=${user.uid})}">みんなのToDo</a>
+    <a class="button" th:href="@{/}">ログアウト</a>
+    <h2>ToDo</h2>
+    <table class="todolist todo">
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>ユーザ</th>
+            <th>作成日</th>
+            <th>アクション</th>
+        </tr>
+        <tr th:each="todo: ${todos}">
+            <td>#[[${todo.tid}]]</td>
+            <td><a th:href="@{/todos/{uid}/{tid}(uid=${user.uid}, tid=${todo.tid})}" th:title="${todo.description}">[[${todo.title}]] </a></td>
+            <td>[[${todo.name}]]</td>
+            <td>[[${#dates.format(todo.createdAt, 'yyyy-MM-dd')}]]</td>
+            <td>
+                <th:block th:if="${todo.uid} == ${user.uid}">
+                    <a class="button" th:href="@{/todos/{uid}/{tid}/done(uid=${user.uid}, tid=${todo.tid})}">Done !</a>
+                </th:block>
+            </td>
+        </tr>
+        <tr class="newtodo">
+            <form th:action="@{/todos/{uid}(uid=${user.uid})}" th:object="${todoForm}" method="post">
+                <td>新規</td>
+                <td colspan="3" style="text-align:left;">
+                    <div>
+                        <label for="title">タイトル：</label>
+                        <input type="text" size="32" required th:field="*{title} " />
+                    </div> <br/>
+                    <div>
+                        <label for="title">詳細説明：</label>
+                        <textarea cols="40" rows="4" th:field="*{description} " style="vertical-align: middle;" />
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" value="新規作成" class="button" />
+                </td>
+            </form>
+
+        </tr>
+    </table>
+    <h2>Done</h2>
+    <table class="todolist done">
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>ユーザ</th>
+            <th>完了日</th>
+            <th>アクション</th>
+        </tr>
+        <tr th:each="done: ${dones} ">
+            <td>#[[${done.tid}]]</td>
+            <td><a th:href="@{/todos/{uid}/{tid}(uid=${user.uid}, tid=${done.tid})}" th:title="${done.description}">[[${done.title}]]</a></td>
+            <td>[[${done.name}]]</td>
+            <td>[[${#dates.format(done.doneAt, 'yyyy-MM-dd')}]]</td>
+            <td>
+                <th:block th:if="${done.uid} == ${user.uid}">
+                    <a class="button" th:href="@{/todos/{uid}/{tid}/reopen(uid=${user.uid}, tid=${done.tid})}">Reopen</a>
+                </th:block>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <p style="font-style: italic">(C) 2020, MASA-N, IT Specialist Course, Kobe University</p>
+
+</body>
+
+</html>

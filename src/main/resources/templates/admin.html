@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>全ユーザのリスト</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+
+<body>
+    <h1>管理コンソール</h1>
+    <h2>ユーザ管理</h2>
+    <ul>
+        <li><a href="/users">ユーザ管理画面へ</a></li>
+    </ul>
+    <h2>ToDoリスト</h2>
+    <ul th:each="u: ${uList}">
+        <li>
+            <a th:href="@{/todos/{uid}(uid=${u.uid})}" th:text="${u.name}"></a>
+        </li>
+    </ul>
+
+
+</body>
+
+</html>
