@@ -1,24 +1,20 @@
 package jp.kobespiral.todo.dto;
 
-import java.util.Date;
-
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-import jp.kobespiral.todo.entity.ToDo;
 import lombok.Data;
 
+/**
+ * ToDoのフォーム．タイトルと詳細説明のみ．その他の属性はサービス層で付与される
+ */
 @Data
 public class ToDoForm {
     @NotBlank
-    String title;
+    @Size(max=32)
+    String title; //タイトル
 
-    String description;
-
-    String uid;
-
-    public ToDo toEntity() {
-        ToDo t = new ToDo(null, title, description, true, new Date(), new Date(), null, uid);
-        return t;
-    }
+    @Size(max=512)
+    String description; //詳細説明
 
 }

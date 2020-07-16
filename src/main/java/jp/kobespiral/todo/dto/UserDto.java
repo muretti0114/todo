@@ -2,19 +2,14 @@ package jp.kobespiral.todo.dto;
 
 import java.util.Date;
 
-import jp.kobespiral.todo.entity.User;
 import lombok.Data;
 
+/**
+ * ユーザ用のDTO．現状エンティティと同じだが，将来きっと使うはず．
+ */
 @Data
 public class UserDto {
     String uid;
     String name;
     Date createdAt; 
-    public static UserDto build(User user) {
-        UserDto dto = new UserDto();
-        dto.setUid(user.getUid());
-        dto.setName(user.getName());
-        dto.setCreatedAt(user.getCreatedAt());
-        return dto;
-    }
 }

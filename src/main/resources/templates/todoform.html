@@ -3,31 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ユーザ登録フォーム</title>
+    <title>ToDoの確認・更新</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 
 <body>
     <h1>ToDoの確認・更新</h1>
     <p>内容を更新する場合は，「更新する」ボタンを押してください．</p>
-    <form role="form" th:action="${postUrl}" th:object="${todoForm}" method="post">
+    <form role="form" th:action="@{/todos/{uid}/{tid}(uid=${userId}, tid=${todo.tid})}" th:object="${todo}" method="post">
         <table class="tabform large">
             <tr>
-                <td><label for="tid">tid： </label></td>
+                <td><label for="tid">ID： </label></td>
                 <td><input class="large" type="text" disabled th:field="*{tid}" /></td>
             </tr>
             <tr>
-                <td><label for="name">タイトル： </label></td>
-                <td><input class="large" type="text" size="40" required th:field="*{title}" /></td>
+                <td><label for="title">タイトル： </label></td>
+                <td>
+                    <input class="large" type="text" size="40" required th:field="*{title}" />
+                    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red"></span>
+                </td>
             </tr>
             <tr>
-                <td><label for="name">詳細説明： </label></td>
-                <td><textarea class="large" cols="40" rows="4" required th:field="*{description}" /></td>
+                <td><label for="description">詳細説明： </label></td>
+                <td>
+                    <textarea class="large" cols="40" rows="4" th:field="*{description}" />
+                    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red"></span>
+                </td>
+
             </tr>
+            <tr>
+                <td><label for="createdAt">作成日時： </label></td>
+                <td><input class="large" type="text" disabled th:field="*{createdAt}" /></td>
+            </tr>
+            <tr>
+                <td><label for="updatedAt">更新日時： </label></td>
+                <td><input class="large" type="text" disabled th:field="*{updatedAt}" /></td>
+            </tr>
+            <tr>
+                <td><label for="doneAt">完了日時： </label></td>
+                <td><input class="large" type="text" disabled th:field="*{doneAt}" /></td>
+            </tr>
+
             <tr>
                 <td colspan="2">
                     <input type="button" class="large" onclick="history.back()" value="戻る" />
-                    <th:block th:if="${user.uid} == *{uid}">
+                    <th:block th:if="${userId} == *{uid}">
                         <input type="submit" class="large" value="更新する" />
                     </th:block>
                 </td>
