@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>エラー</title>
+</head>
+
+<body>
+    <h1>エラー</h1>
+    <hr />
+
+    <img th:src="@{/todo_error.png}" width="320">
+    <p style="color: red;">ToDoアプリケーションがエラーを返しました．確認してください．</p>
+
+    <ul th:object=${error}>
+        <li>エラーコード： [[*{code}]]</li>
+        <li>メッセージ： [[*{message}]]</li>
+    </ul>
+    <input type="button" class="large" onclick="history.back()" value="戻る" />
+</body>
+
+</html>
