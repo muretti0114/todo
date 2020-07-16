@@ -4,6 +4,11 @@
 
 Kobe Spiral のSpring Bootの題材，ToDo管理を行うWebアプリケーションのサンプル実装．
 
+<img src="scr_todo1.png">
+
+<img src="scr_todo2.png">
+
+
 ## デプロイ方法
 
 1. MySQLにデータベースtodoを作成
