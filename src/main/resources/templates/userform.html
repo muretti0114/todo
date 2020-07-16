@@ -13,7 +13,7 @@
     <form role="form" th:action="${postUrl}" th:object="${userForm}" method="post">
         <table class="tabform large">
             <tr>
-                <td><label for="uid">uid (半角英数字_-)： </label></td>
+                <td><label for="uid">uid (半角英数字_-・大文字は除く)： </label></td>
                 <td><input class="large" type="text" required th:field="*{uid}" />
                     <span th:if="${#fields.hasErrors('uid')}" th:errors="*{uid}" style="color: red"></span>
                 </td>

@@ -17,6 +17,9 @@ import jp.kobespiral.todo.dto.UserForm;
 import jp.kobespiral.todo.entity.User;
 import jp.kobespiral.todo.service.UserService;
 
+/**
+ * ToDoアプリのユーザ管理用REST-APIコントローラ
+ */
 @RestController
 @RequestMapping("/api/users")
 public class UserRestController {

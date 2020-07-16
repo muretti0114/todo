@@ -1,6 +1,7 @@
 package jp.kobespiral.todo.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import jp.kobespiral.todo.repository.UserRepository;
 import jp.kobespiral.todo.dto.UserForm;
 
 /**
- * ユーザ情報を取得するサービス
+ * ToDoアプリのユーザを管理するドメイン・サービス
  */
 @Service
 public class UserService {
@@ -34,7 +35,7 @@ public class UserService {
         if (users.findById(uid).isPresent()) {
             throw new ToDoException(ToDoException.USER_ALREADY_EXISTS, uid + ": User already exists.");
         } else {
-            User u = form.toEntity();
+            User u = new User(form.getUid(), form.getName(), new Date());
             return users.save(u);
         }
     }

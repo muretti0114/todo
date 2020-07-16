@@ -9,6 +9,8 @@
             const uid = document.querySelector("#uid").value;
             if (uid) {
                 window.location.assign("todos/" + uid);
+            } else {
+                document.querySelector("#error").textContent = "ユーザIDを入力してください";
             }
         }
     </script>
@@ -23,6 +25,7 @@
         <label for="uid">ユーザID: </label>
         <input type="text" id="uid" name="uid" required />
         <input type="button" id="uid" name="uid" value="ログイン" onclick="move_to_todos()" />
+        <span id="error" style="color: red;"></span>
     </p>
     <hr />
     <p style="font-style: italic">(C) 2020, MASA-N, IT Specialist Course, Kobe University</p>

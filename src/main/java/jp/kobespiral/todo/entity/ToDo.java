@@ -15,6 +15,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * ToDoエンティティ
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,26 +25,26 @@ import lombok.NoArgsConstructor;
 public class ToDo {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    Long tid;
+    Long tid;           //ID．自動採番
 
     @NotBlank
     @Size(max=32)
-    String title;
+    String title;       //タイトル
 
     @Size(max=512)
-    String description;
+    String description; //詳細説明
 
-    boolean isOpen;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    Date createdAt;
+    boolean isOpen;    //未処理の状態か
 
     @Temporal(TemporalType.TIMESTAMP)
-    Date updatedAt;
+    Date createdAt;    //作成日時
 
     @Temporal(TemporalType.TIMESTAMP)
-    Date doneAt;
+    Date updatedAt;    //更新日時
+
+    @Temporal(TemporalType.TIMESTAMP)
+    Date doneAt;       //完了日時
 
     @NotBlank
-    String uid;
+    String uid; //ユーザへの外部キー
 }

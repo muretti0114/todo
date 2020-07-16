@@ -28,7 +28,7 @@ public class UserController {
         List<User> users = us.getAllUsers();
         model.addAttribute("ulist", users);
 
-        return "alluserlist";
+        return "userlist";
     }
 
     @GetMapping("/create")
@@ -40,7 +40,7 @@ public class UserController {
         return "userform";
     }
     @PostMapping("")
-    String createUser(@ModelAttribute @Validated UserForm form, BindingResult bindingResult,Model model) {
+    String createUser(@ModelAttribute("userForm") @Validated UserForm form, BindingResult bindingResult,Model model) {
 
         if (bindingResult.hasErrors()) {
             return "userform";
@@ -50,7 +50,7 @@ public class UserController {
         return "redirect:/users";
     }
     @PostMapping("/{uid}")
-    String createUser(@PathVariable String uid, @ModelAttribute @Validated UserForm form, BindingResult bindingResult, Model model) {
+    String createUser(@PathVariable String uid, @ModelAttribute("userForm") @Validated UserForm form, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "userform";

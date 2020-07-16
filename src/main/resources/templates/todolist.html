@@ -33,16 +33,18 @@
             </td>
         </tr>
         <tr class="newtodo">
-            <form th:action="@{/todos/{uid}(uid=${user.uid})}" th:object="${todoForm}" method="post">
+            <form th:action="@{/todos/{uid}(uid=${user.uid})}" th:object="${toDoForm}" method="post">
                 <td>新規</td>
                 <td colspan="3" style="text-align:left;">
                     <div>
                         <label for="title">タイトル：</label>
                         <input type="text" size="32" required th:field="*{title} " />
+                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red"></span>
                     </div> <br/>
                     <div>
                         <label for="title">詳細説明：</label>
                         <textarea cols="40" rows="4" th:field="*{description} " style="vertical-align: middle;" />
+                        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red"></span>
                     </div>
                 </td>
                 <td>

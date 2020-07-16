@@ -10,6 +10,7 @@ public class ToDoException extends RuntimeException {
     public static final int NO_SUCH_TODO = 2;
     public static final int USER_ALREADY_EXISTS = 11;
     public static final int TODO_ALREADY_EXISTS = 12;
+    public static final int INVALID_FORM_DATA = 30;
     public static final int INVALID_USER_ID = 31;
     public static final int INVALID_USER_INFO = 32;
     public static final int INVALID_TODO_INFO = 33;
