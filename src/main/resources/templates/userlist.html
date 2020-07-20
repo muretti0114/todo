@@ -9,9 +9,11 @@
 
 <body>
     <h1>全ユーザのリスト</h1>
-    <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/users/create}'|" value="新規ユーザ登録" />
-    <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/}'|" value="タイトル画面へ" />
-    <table class="tablist">
+    <p>
+        <input type="button" class="button" th:onclick="|location.href='@{/users/create}'|" value="新規ユーザ登録" />
+        <input type="button" class="button" th:onclick="|location.href='@{/}'|" value="タイトル画面へ" />
+    </p>
+    <table class="todolist todo">
         <tr>
             <th>uid</th>
             <th>名前</th>
