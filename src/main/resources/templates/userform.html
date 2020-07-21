@@ -9,12 +9,13 @@
 
 <body>
     <h1>ユーザ登録フォーム</h1>
-
-    <form role="form" th:action="@{{url}(url=${postUrl})}" th:object="${userForm}" method="post">
+    <form role="form" th:action="@{/{url}(url=${postUrl})}" th:object="${userForm}" method="post">
         <table class="tabform large">
             <tr>
                 <td><label for="uid">uid (半角英数字小文字_-)： </label></td>
-                <td><input class="large" type="text" required th:field="*{uid}" />
+                <td>
+                    <input th:if=${isUpdate} disabled class="large" type="text" required th:field="*{uid}" />
+                    <input th:unless=${isUpdate} class="large" type="text" required th:field="*{uid}" />
                     <span th:if="${#fields.hasErrors('uid')}" th:errors="*{uid}" style="color: red"></span>
                 </td>
             </tr>
