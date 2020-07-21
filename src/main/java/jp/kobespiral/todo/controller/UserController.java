@@ -34,25 +34,40 @@ public class UserController {
     @GetMapping("/create")
     String showCreateForm(Model model) {
         UserForm form = new UserForm();
-        model.addAttribute("postUrl", "/users");
+        model.addAttribute("postUrl", "users");
+        model.addAttribute("isUpdate", false);
         model.addAttribute("userForm", form);
-
         return "userform";
     }
     @PostMapping("")
     String createUser(@ModelAttribute("userForm") @Validated UserForm form, BindingResult bindingResult,Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("postUrl", "users");
+            model.addAttribute("isUpdate", false);
             return "userform";
         }
         us.createUser(form);
         
         return "redirect:/users";
     }
+
+    @GetMapping("/{uid}/update")
+    String showUpdateForm(@PathVariable String uid,  Model model) {
+        User u = us.getUserByUid(uid);
+        model.addAttribute("postUrl", "users/"+uid);
+        model.addAttribute("isUpdate", true);
+        model.addAttribute("userForm", u);
+        return "userform";
+    }
+
+
     @PostMapping("/{uid}")
-    String createUser(@PathVariable String uid, @ModelAttribute("userForm") @Validated UserForm form, BindingResult bindingResult, Model model) {
+    String updateUser(@PathVariable String uid, @ModelAttribute("userForm") @Validated UserForm form, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("postUrl", "users/"+uid);
+            model.addAttribute("isUpdate", true);
             return "userform";
         }
         us.updateUser(uid, form);
@@ -67,14 +82,6 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/{uid}/update")
-    String showUpdateForm(@PathVariable String uid,  Model model) {
-        User u = us.getUserByUid(uid);
-        model.addAttribute("postUrl", "/users/"+uid);
-        model.addAttribute("userForm", u);
-        model.addAttribute("isUpdate", true);
-        return "userform";
-    }
 
 
 
